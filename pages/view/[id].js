@@ -8,7 +8,7 @@ const Post = () => {
   const { id } = router.query
   const [item, setItem] = useState([]);
 
-  const API_URL = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
+  const API_URL = `http://makeup-api.herokuapp.com/api/v1/products/${id}.json`;
 
   function getData(){
       axios.get(API_URL)
@@ -22,10 +22,7 @@ const Post = () => {
         }
     }, [id])
     
-    const filtered_item = item.filter((val)=>{return val.id == id})
-    .map((val)=>{return val});
-    
-  return <Item item={filtered_item} />
+  return <Item item={item} />
 }
 
 export default Post
